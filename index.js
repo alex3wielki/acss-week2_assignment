@@ -31,3 +31,4 @@ function render(obj){
 }
 let hero = render(heroes[0]);
 console.log(ziemniak);
+//testing ssh
