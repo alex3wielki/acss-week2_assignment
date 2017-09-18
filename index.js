@@ -78,13 +78,13 @@ function updateEventListeners(hero) {
         e.preventDefault();
         if (followButton.textContent == '+ Follow') {
           followButton.textContent = 'Following';
-          console.info(`following ${hero.name}`);
+          console.log(`following ${hero.name}`);
           sound_follow.pause();
           sound_follow.play();
         }
         else {
           followButton.textContent = '+ Follow';
-          console.info(`unfollowing ${hero.name}`);
+          console.log(`unfollowing ${hero.name}`);
           sound_unfollow.pause();          
           sound_unfollow.play();
         }
