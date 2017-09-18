@@ -49,12 +49,20 @@ function* idMaker() {
   while (index < moreHeroes.length)
     yield index++;
 }
-
 let gen = idMaker();
+
+
+let sound_add_hero = document.querySelector('#sound-add-new-hero');
+let sound_follow = document.querySelector('#sound-follow');
+let sound_unfollow = document.querySelector('#sound-unfollow');
+
+//Show new hero;
 document.querySelector('a').addEventListener('click', function () {
   let index = gen.next().value;
   index < 6 ? document.querySelector('main').insertAdjacentHTML('beforeend', snippet[index]) : console.warn('Out of heroes');
   /*                              Finding this ^^^^^^^^^^^^^ function took SOOOOOOO LONG*/
+  sound_add_hero.pause();
+  sound_add_hero.play();
   updateEventListeners(moreHeroes[index]);
 });
 
@@ -64,17 +72,21 @@ function updateEventListeners(hero) {
   for (let i = 0; i < followButtons.length; i++) {
     if (!followButtons[i].classList.contains('has-event-listener')) {
       let followButton = followButtons[i];
-      
+
       followButton.className += 'has-event-listener';
       followButton.addEventListener('click', function (e) {
         e.preventDefault();
         if (followButton.textContent == '+ Follow') {
           followButton.textContent = 'Following';
           console.info(`following ${hero.name}`);
+          sound_follow.pause();
+          sound_follow.play();
         }
         else {
           followButton.textContent = '+ Follow';
           console.info(`unfollowing ${hero.name}`);
+          sound_unfollow.pause();          
+          sound_unfollow.play();
         }
       });
     }
